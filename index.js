@@ -12,9 +12,7 @@ app.get('/',(req,res)=>{
     res.send('John is running')
 });
 app.listen(port
-//     ,()=>{
-//     // console.log('john is running on port',port);
-// }
+
 );
 
 // mongodb
@@ -66,4 +64,4 @@ async function run(){
 
     }
 }
-run().catch()
+run().catch(console.dir)
