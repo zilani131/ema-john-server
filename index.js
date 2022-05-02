@@ -11,9 +11,11 @@ app.get('/',(req,res)=>{
 
     res.send('John is running')
 });
-app.listen(port,()=>{
-    console.log('john is running on port',port);
-});
+app.listen(port
+//     ,()=>{
+//     // console.log('john is running on port',port);
+// }
+);
 
 // mongodb
 
@@ -25,7 +27,7 @@ async function run(){
        await client.connect();
        const productCollection = client.db("emaJohn").collection("products");
        app.get('/product',async (req,res)=>{
-           console.log('query',req.query)
+        //    console.log('query',req.query)
            const page=parseInt(req.query.page); //we have to convert it to number as it is in string format
            const size=parseInt(req.query.size);
            const query={};
@@ -53,7 +55,7 @@ async function run(){
     app.post('/productsByKeys',async(req,res)=>{
         const keys =req.body;
         const ids=keys.map(id=>ObjectId(id)) //By ObjectId we find the individual id from mongodb
-        console.log(keys,ids)
+        // console.log(keys,ids)
         const query={_id:{$in:ids}}
         const cursor=productCollection.find(query);
         const products=await cursor.toArray();
@@ -64,4 +66,4 @@ async function run(){
 
     }
 }
-run().catch(console.dir)
+run().catch()
